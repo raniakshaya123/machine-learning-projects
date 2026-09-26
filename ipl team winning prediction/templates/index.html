@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Score Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🏆 IPL First Innings Score Predictor</h1>
+
+    <p class="subtitle">
+        Predict the Final Score Using Live Match Statistics
+    </p>
+
+    <form action="/predict" method="POST">
+
+        <div class="form-group">
+            <label>Venue</label>
+            <select name="venue">
+                {% for venue in venues %}
+                <option value="{{ venue }}">{{ venue }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Batting Team</label>
+            <select name="batting_team">
+                {% for team in batting_teams %}
+                <option value="{{ team }}">{{ team }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Bowling Team</label>
+            <select name="bowling_team">
+                {% for team in bowling_teams %}
+                <option value="{{ team }}">{{ team }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Batsman</label>
+            <select name="batsman">
+                {% for batsman in batsmen %}
+                <option value="{{ batsman }}">{{ batsman }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Bowler</label>
+            <select name="bowler">
+                {% for bowler in bowlers %}
+                <option value="{{ bowler }}">{{ bowler }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Current Runs</label>
+            <input type="number" name="runs" required>
+        </div>
+
+        <div class="form-group">
+            <label>Wickets Lost</label>
+            <input type="number" min="0" max="10" name="wickets" required>
+        </div>
+
+        <div class="form-group">
+            <label>Overs Completed</label>
+            <input type="number" step="0.1" min="0" max="20" name="overs" required>
+        </div>
+
+        <div class="form-group">
+            <label>Runs Last 5 Overs</label>
+            <input type="number" name="runs_last_5" required>
+        </div>
+
+        <div class="form-group">
+            <label>Wickets Last 5 Overs</label>
+            <input type="number" min="0" max="5" name="wickets_last_5" required>
+        </div>
+
+        <div class="form-group">
+            <label>Striker Score</label>
+            <input type="number" name="striker" required>
+        </div>
+
+        <div class="form-group">
+            <label>Non-Striker Score</label>
+            <input type="number" name="non_striker" required>
+        </div>
+
+        <button type="submit">
+            Predict Score
+        </button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+
+        <h2>🎯 Prediction Result</h2>
+
+        <p>
+            Predicted Final Score
+        </p>
+
+        <div class="score">
+            {{ prediction }}
+        </div>
+
+        <p class="range">
+            Expected Range: {{ lower }} - {{ upper }}
+        </p>
+
+    </div>
+    {% endif %}
+
+</div>
+
+<footer>
+    Built using Flask, Machine Learning & Random Forest
+</footer>
+
+</body>
+</html>

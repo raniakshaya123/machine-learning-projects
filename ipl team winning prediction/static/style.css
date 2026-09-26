@@ -1,0 +1,139 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #2563eb
+    );
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    color:white;
+}
+
+.container{
+    width:900px;
+    max-width:95%;
+    background:rgba(30,41,59,0.95);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:30px;
+    color:#cbd5e1;
+}
+
+form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+    margin-bottom:6px;
+    font-weight:600;
+}
+
+input,
+select{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:14px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+}
+
+button{
+    grid-column:span 2;
+    padding:15px;
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #38bdf8
+    );
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+.result{
+    margin-top:30px;
+    padding:25px;
+    text-align:center;
+    background:#0f172a;
+    border:2px solid #22c55e;
+    border-radius:15px;
+}
+
+.result h2{
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:50px;
+    font-weight:bold;
+    color:#22c55e;
+    margin:15px 0;
+}
+
+.range{
+    font-size:20px;
+    color:#e2e8f0;
+}
+
+footer{
+    margin-top:20px;
+    color:#cbd5e1;
+    text-align:center;
+}
+
+@media(max-width:768px){
+
+    form{
+        grid-template-columns:1fr;
+    }
+
+    button{
+        grid-column:span 1;
+    }
+
+    .container{
+        padding:20px;
+    }
+}
